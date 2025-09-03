@@ -1,0 +1,37 @@
+{% load static %}
+<h1>درس ریزپردازنده و برنامه نویسی به زبان اسمبلی</h1>
+
+<!-- توضیحات درس -->
+<div style="background-color:#f0f0f0; padding:15px; border-radius:5px;">
+    <p>توضیحات کامل درس ریزپردازنده و برنامه نویسی به زبان اسمبلی</p>
+</div>
+
+<hr>
+
+<!-- بخش دانلود PDF ها -->
+<div style="margin-top:20px;">
+    <h3 style="color:green;">دانلود فایل‌های درس</h3>
+    <ul style="list-style:none; padding:0;">
+        <li>
+            <a href="{% static 'subject/pdf/microprocessor1.pdf' %}" download class="download-btn">
+                دانلود microprocessor1.pdf
+            </a>
+        </li>
+    </ul>
+</div>
+
+<style>
+.download-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    margin: 5px 0;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+.download-btn:hover {
+    background-color: #0056b3;
+}
+</style>

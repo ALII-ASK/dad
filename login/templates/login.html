@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>صفحه ورود</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 400px;
+            max-width: 90%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #444;
+        }
+        .form-select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .form-button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background-color: #10b981; /* رنگ سبز متفاوت */
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .form-button:hover {
+            background-color: #059669;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>انتخاب استاد و درس</h2>
+        <form method="get" action="{% url 'subject_page_redirect' %}">
+            {% csrf_token %}
+            
+            <!-- انتخاب استاد (ظاهر فقط) -->
+            <div class="form-group">
+                <label for="teacher-select" class="form-label">نام استاد:</label>
+                <select id="teacher-select" name="teacher_id" class="form-select">
+                    <option value="">استاد را انتخاب کنید</option>
+                    {% for t in teachers %}
+                        <option value="{{ t.teacher_id }}">{{ t.firstname }} {{ t.lastname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- انتخاب درس -->
+            <div class="form-group">
+                <label for="subject-select" class="form-label">نام درس:</label>
+                <select id="subject-select" name="subject_name" class="form-select" required>
+                    <option value="">درس را انتخاب کنید</option>
+                    <option value="automata">نظریه زبان ها و ماشین ها</option>
+                    <option value="discrete">ریاضیات گسسته</option>
+                    <option value="compiler">اصول طراحی کامپایلر</option>
+                    <option value="microprocessor">ریزپردازنده و برنامه نویسی به زبان اسمبلی</option>
+                    <option value="internet">مهندسی اینترنت</option>
+                    <option value="fundamentals">مبانی کامپیوتر</option>
+                    <option value="softwaretest">آزمون نرم افزار</option>
+                    <option value="speciallanguage">زبان تخصصی</option>
+                </select>
+            </div>
+
+            <!-- دکمه ورود -->
+            <button type="submit" class="form-button">ورود</button>
+        </form>
+    </div>
+</body>
+</html>
