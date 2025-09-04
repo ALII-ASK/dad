@@ -60,15 +60,19 @@
     </style>
 </head>
 <body>
+    <p style="position: fixed;bottom: 1px;left: 7px;font-size: 8px;color: #666;">
+            Made by Ali Askari
+    </p>
+
     <div class="container">
         <h2>انتخاب استاد و درس</h2>
         <form method="get" action="{% url 'subject_page_redirect' %}">
             {% csrf_token %}
             
-            <!-- انتخاب استاد (ظاهر فقط) -->
+            <!-- انتخاب استاد (required) -->
             <div class="form-group">
                 <label for="teacher-select" class="form-label">نام استاد:</label>
-                <select id="teacher-select" name="teacher_id" class="form-select">
+                <select id="teacher-select" name="teacher_id" class="form-select" required title="لطفاً استاد را انتخاب کنید">
                     <option value="">استاد را انتخاب کنید</option>
                     {% for t in teachers %}
                         <option value="{{ t.teacher_id }}">{{ t.firstname }} {{ t.lastname }}</option>
@@ -79,7 +83,7 @@
             <!-- انتخاب درس -->
             <div class="form-group">
                 <label for="subject-select" class="form-label">نام درس:</label>
-                <select id="subject-select" name="subject_name" class="form-select" required>
+                <select id="subject-select" name="subject_name" class="form-select" required title="لطفاً درس را انتخاب کنید">
                     <option value="">درس را انتخاب کنید</option>
                     <option value="automata">نظریه زبان ها و ماشین ها</option>
                     <option value="discrete">ریاضیات گسسته</option>
